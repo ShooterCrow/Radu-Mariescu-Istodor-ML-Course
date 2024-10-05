@@ -7,7 +7,7 @@ let nxtBtn
 const sp = new SketchPad(container, canvas, 300);
 const undoBtn = document.querySelector("#undoBtn");
 let index = 0;
-const itemsToDraw = ["car", "tree", "jug", "fish", "tree", "hanger", "bulb", "cup", "bottle"]
+const itemsToDraw = ["car", "fish", "house", "tree", "bicycle", "guitar", "pencil", "clock"]
 
 const data = {
     username: null,
