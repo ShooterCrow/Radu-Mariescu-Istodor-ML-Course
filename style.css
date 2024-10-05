@@ -12,9 +12,14 @@ body {
 }
 
 #content {
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.instructionDiv {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
