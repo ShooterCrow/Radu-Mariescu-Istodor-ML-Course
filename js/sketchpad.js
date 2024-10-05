@@ -12,7 +12,6 @@ class SketchPad {
         this.undoBtn = document.createElement("button");
         this.undoBtn.innerText = "Undo";
         this.undoBtn.setAttribute("id", "undoBtn");
-        this.undoBtn.disabled = true
         this.undoBtn.style = `
         padding: 10px 7px;
         display: none;
@@ -21,10 +20,18 @@ class SketchPad {
         container.appendChild(this.lineBr)
         container.appendChild(this.undoBtn)
 
-        this.isDrawin = false;
+        this.reset(0)
         this.ctx = this.canvas.getContext("2d");
-        this.paths = [];
         this.#addEventListeners();
+    }
+
+    reset(x) {
+        this.paths = [];
+        this.isDrawin = false;
+        this.undoBtn.disabled = true
+        if (x===1) {
+            this.#redraw()
+        }
     }
 
     #addEventListeners() {
@@ -44,9 +51,8 @@ class SketchPad {
                 this.#redraw();
             }
         }
-        
 
-        this.canvas.onmouseup = () => {
+        window.onmouseup = () => {
             this.isDrawin = false
         }
 
@@ -71,13 +77,13 @@ class SketchPad {
             this.canvas.onmousemove(toucheLocation)
         }
         this.canvas.ontouchend = () => {
-            this.canvas.onmouseup()
+            window.onmouseup()
         }
     }
-    
+
     #redraw() {
-        this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height)
-        draw.paths(this.ctx,this.paths)
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        draw.paths(this.ctx, this.paths)
     }
 
     #mouseLocation(x) {
