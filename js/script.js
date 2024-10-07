@@ -74,7 +74,7 @@ function save() {
     const el = document.createElement('a');
     el.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(data)))
 
-    const fileName = data.session+".json";
+    const fileName = data.session + ".json";
     el.setAttribute("download", fileName);
 
     document.body.onkeydown = (e) => {
